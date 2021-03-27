@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-register',
@@ -9,12 +10,22 @@ import { NavController } from '@ionic/angular';
 })
 export class RegisterPage implements OnInit {
 
-  constructor(private router: Router) { }
+  data = {};
+  token: any;
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  close(){
-    this.router.navigate(['/home']);
+  // close(){
+  //   this.router.navigate(['/home']);
+  // }
+
+  register(){
+    this.authService.register(this.data).then(data => {
+      this.token = data;
+      this.router.navigate(['/home']);
+      });
+    console.log(this.token);
   }
 }
