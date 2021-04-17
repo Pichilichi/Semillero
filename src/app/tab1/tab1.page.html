@@ -7,11 +7,27 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Fecha</ion-card-subtitle>
+      <ion-card-title>Titulo de la opinion</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      descripcion de la opinion
+    </ion-card-content>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-row no-padding>
+      <ion-col>
+        <ion-button color="transparent" size="small" >
+          <ion-icon name="thumbs-up-sharp"></ion-icon>
+          Aqui van el numero de likes mediante una pipe
+        </ion-button>   
+      </ion-col>
+    </ion-row>
+    
+  </ion-card>
+
+  
 </ion-content>
