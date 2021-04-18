@@ -28,4 +28,47 @@ export class AuthService {
       });
       });
   }
+
+  login(data: any){
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/login',
+      {
+      email: data.email,
+      password: data.pwd
+      })
+      .subscribe(data => {
+      this.token = data;
+      resolve(data);
+      }, err => {
+      console.log(err);
+      });
+      });
+  }
+
+  getOpiniones(tok:any){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + '/opinions', {
+      headers: new HttpHeaders().set('Authorization', 'Bearer' + tok.data.token),
+      })
+      .subscribe(data => {
+      resolve(data);
+      },err =>{
+      console.log(err)
+      });
+      });
+  }
+
+  getUsers(tok:any){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + '/users', {
+        headers: new HttpHeaders().set('Authorization', 'Bearer' + tok.data.token),
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+      });
+  }
+
 }
