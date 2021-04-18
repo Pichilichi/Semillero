@@ -45,23 +45,23 @@ export class AuthService {
       });
   }
 
-  getOpiniones(tok:any){
+  getOpiniones(tok: any){
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/opinions', {
-      headers: new HttpHeaders().set('Authorization', 'Bearer' + tok.data.token),
+      this.http.get(this.apiUrl + '/opinions',{
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.data.token)
       })
       .subscribe(data => {
-      resolve(data);
-      },err =>{
-      console.log(err)
+        resolve(data);
+      }, err =>{
+        console.log(err);
       });
-      });
+    });
   }
 
   getUsers(tok:any){
     return new Promise(resolve => {
       this.http.get(this.apiUrl + '/users', {
-        headers: new HttpHeaders().set('Authorization', 'Bearer' + tok.data.token),
+      headers: new HttpHeaders().set('Authorization', 'Bearer' + tok.data.token),
       })
       .subscribe(data => {
         resolve(data);

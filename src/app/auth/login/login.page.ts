@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
   login(){
     this.authService.login(this.data).then( data => {
       this.token = data;
-      console.log(this.token);
+      //console.log(this.token);
       this.router.navigate(['/tabs']);
       }); 
     
