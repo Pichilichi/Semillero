@@ -3,31 +3,47 @@
     <ion-title>
       Tab 1
     </ion-title>
+    <ion-item>
+      <ion-label> Buscar por plaga </ion-label>
+      <ion-select (ionChange)="change()" [(ngModel)]="id">
+        <ion-select-option value="1">Dwight Schuster</ion-select-option>
+        <ion-select-option value="2">Kacey Corwin PhD</ion-select-option>
+        <ion-select-option value="3">Marietta Daniel</ion-select-option>
+        <ion-select-option value="4">Kirk Bechtelar</ion-select-option>
+        <ion-select-option value="5">Anais Stamm</ion-select-option>
+        <ion-select-option value="6">Dr. Deshaun Hoppe</ion-select-option>
+        <ion-select-option value="7">Mr. Enos Flatley PhD</ion-select-option>
+        <ion-select-option value="8">Breana Shanahan</ion-select-option>
+        <ion-select-option value="9">Name Boyle</ion-select-option>
+        <ion-select-option value="10">Dayne Will</ion-select-option>
+        <ion-select-option value="11">Mostrar todas</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Fecha</ion-card-subtitle>
-      <ion-card-title>Titulo de la opinion</ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content>
-      descripcion de la opinion
-    </ion-card-content>
-
-    <ion-row no-padding>
-      <ion-col>
-        <ion-button color="transparent" size="small" >
-          <ion-icon name="thumbs-up-sharp"></ion-icon>
-          Aqui van el numero de likes mediante una pipe
-        </ion-button>   
-      </ion-col>
-    </ion-row>
+  <ion-list>
+    <ion-card *ngFor="let opinion of data">
+      <ion-card-header>
+        <ion-card-subtitle>{{ opinion.created_at | date }}</ion-card-subtitle>
+        <ion-card-title>{{ opinion.headline }}</ion-card-title>
+      </ion-card-header>
     
-  </ion-card>
+      <ion-card-content>
+        {{ opinion.description }}
+      </ion-card-content>
 
+      <ion-row no-padding>
+        <ion-col>
+          <ion-button color="transparent" size="small" >
+            <ion-icon name="thumbs-up-sharp"></ion-icon>
+           {{ opinion.num_likes >= 3 ? opinion.num_likes : ' '}}
+          </ion-button>   
+        </ion-col>
+      </ion-row>
+      
+    </ion-card>
+  </ion-list>
   
 </ion-content>
