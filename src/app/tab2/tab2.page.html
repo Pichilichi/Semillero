@@ -7,11 +7,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card *ngFor="let plaga of data.data">
+    <ion-card-header>
+      <ion-card-subtitle>Id de la plaga {{plaga.id}}</ion-card-subtitle>
+      <ion-card-title>Nombre de la plaga {{plaga.name}}</ion-card-title>
+    </ion-card-header>  
+  </ion-card>
 </ion-content>

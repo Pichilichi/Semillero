@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  data: any; 
+  plagas = {};
+
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.data = '';
+    this.authService.getPlagas(this.authService.token).then(data => {
+      this.plagas = data
+      this.data = this.plagas
+    });
+  }
 
 }

@@ -71,4 +71,15 @@ export class AuthService {
       });
   }
 
+  getPlagas(tok: any){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + '/plagues',)
+      .subscribe(data =>{
+        resolve(data);
+      }, err=> {
+        console.log(err);
+      });
+    });
+  }
+
 }
