@@ -23,7 +23,7 @@ export class Tab1Page {
     });
     this.authService.getPlagas(this.authService.token).then(data => {
       this.plagas = this.filtroTodasPlagas(data)
-      console.log(this.plagas);
+      //console.log(this.plagas);
     });
   } 
 
@@ -51,4 +51,14 @@ export class Tab1Page {
     return toSort.data.filter((element) => element.id < 100)
   }
 
+  loadData(event){
+    setTimeout(() => {
+      console.log('Done');
+      event.target.complete();
+
+      if(this.data.length == 1000){
+        event.target.disabled = true;
+      }
+    }, 200);
+  }
 }
