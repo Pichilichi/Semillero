@@ -11,25 +11,34 @@ export class Tab1Page {
 
   data: any;
   opiniones = {};
+  plagas: any;
   id: number;
 
   constructor(private http: HttpClient, private authService: AuthService) {
     this.data = '';
     this.authService.getOpiniones(this.authService.token).then(data => {
       this.opiniones = data
-      this.data = this.filtroEnorme(data)
+      this.data = this.filtroOpiniones(data)
       //console.log(this.data)
+    });
+    this.authService.getPlagas(this.authService.token).then(data => {
+      this.plagas = this.filtroTodasPlagas(data)
+      console.log(this.plagas);
     });
   } 
 
   change(){
     this.authService.getOpiniones(this.authService.token).then(data => {
       this.opiniones = data
-      this.data = this.filtroPlaga(data, this.id)
+      this.data = this.filtroIdPlaga(data, this.id)
     });
   }
 
-  filtroPlaga(toSort: any, id){
+  filtroTodasPlagas(toSort: any){
+    return toSort.data.filter((element) => element.id < 100)
+  }
+
+  filtroIdPlaga(toSort: any, id){
     if(id == 11){
       return toSort.data.filter((element) => element.id < 100)
     }
@@ -38,7 +47,7 @@ export class Tab1Page {
     }
   }
 
-  filtroEnorme(toSort: any){
+  filtroOpiniones(toSort: any){
     return toSort.data.filter((element) => element.id < 100)
   }
 

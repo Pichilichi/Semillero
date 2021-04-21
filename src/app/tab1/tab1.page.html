@@ -6,16 +6,7 @@
     <ion-item>
       <ion-label> Buscar por plaga </ion-label>
       <ion-select (ionChange)="change()" [(ngModel)]="id">
-        <ion-select-option value="1">Dwight Schuster</ion-select-option>
-        <ion-select-option value="2">Kacey Corwin PhD</ion-select-option>
-        <ion-select-option value="3">Marietta Daniel</ion-select-option>
-        <ion-select-option value="4">Kirk Bechtelar</ion-select-option>
-        <ion-select-option value="5">Anais Stamm</ion-select-option>
-        <ion-select-option value="6">Dr. Deshaun Hoppe</ion-select-option>
-        <ion-select-option value="7">Mr. Enos Flatley PhD</ion-select-option>
-        <ion-select-option value="8">Breana Shanahan</ion-select-option>
-        <ion-select-option value="9">Name Boyle</ion-select-option>
-        <ion-select-option value="10">Dayne Will</ion-select-option>
+        <ion-select-option *ngFor="let plag of plagas" value="{{ plag.id }}">{{ plag.name }}</ion-select-option>
         <ion-select-option value="11">Mostrar todas</ion-select-option>
       </ion-select>
     </ion-item>
