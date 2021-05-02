@@ -11,6 +11,7 @@ export class Tab2Page {
 
   data: any; 
   plagas = {};
+  textoBusqueda = '';
 
   constructor(private http: HttpClient, private authService: AuthService) {
     this.data = '';
@@ -18,6 +19,13 @@ export class Tab2Page {
       this.plagas = data
       this.data = this.plagas
     });
+  }
+
+  buscarUsuario( event ){
+
+    const busqueda = event.target.value;
+    this.textoBusqueda = busqueda;
+    //console.log(busqueda);
   }
 
 }

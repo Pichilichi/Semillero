@@ -3,11 +3,13 @@
     <ion-title>
       Plagas
     </ion-title>
+    <ion-searchbar animated placeholder="Buscar plaga..." (ionChange)="buscarUsuario( $event )"></ion-searchbar> 
+    <!-- animated solo funciona en ios -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card *ngFor="let plaga of data.data">
+  <ion-card *ngFor="let plaga of data.data | plagas:textoBusqueda ">
     <ion-card-header>
       <ion-card-subtitle>{{plaga.id}}</ion-card-subtitle>
       <ion-card-title>{{plaga.name}}</ion-card-title>
