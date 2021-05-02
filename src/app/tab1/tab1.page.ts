@@ -68,12 +68,7 @@ export class Tab1Page {
     this.datos[0] = this.authService.token.data.id;
     //console.log(this.data);
     //console.log(this.authService.token)
-    
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      this.authService.hacerLike(this.authService.token,this.datos);
-    }, 2000);
-    
+    this.authService.hacerLike(this.authService.token,this.datos);
     
 
     this.authService.getOpiniones(this.authService.token).then(data => {
