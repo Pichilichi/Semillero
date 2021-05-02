@@ -13,6 +13,7 @@ export class Tab1Page {
   opiniones = {};
   plagas: any;
   id: number;
+  datos = [];
 
   constructor(private http: HttpClient, private authService: AuthService) {
     this.data = '';
@@ -63,11 +64,18 @@ export class Tab1Page {
   }
 
   darLike($idOpinion){ 
-    this.data = $idOpinion;
+    this.datos[1] = $idOpinion;
+    this.datos[0] = this.authService.token.data.id;
     //console.log(this.data);
     //console.log(this.authService.token)
-    this.authService.hacerLike(this.authService.token,this.data);
     
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      this.authService.hacerLike(this.authService.token,this.datos);
+    }, 2000);
+    
+    
+
     this.authService.getOpiniones(this.authService.token).then(data => {
       this.opiniones = data
       this.data = this.filtroOpiniones(data)

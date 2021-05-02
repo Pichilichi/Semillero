@@ -83,11 +83,12 @@ export class AuthService {
   }
 
   hacerLike(tok: any, data: any){
+    //console.log(tok.data.id + " " + data)
     return new Promise(resolve => {
       this.http.post(this.apiUrl + '/like', 
       {
-        user_id: tok.data.id,
-        opinion_id: data,
+        user_id: data[0],
+        opinion_id: data[1],
       },{
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.data.token),
       })
