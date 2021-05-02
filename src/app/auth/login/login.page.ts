@@ -21,8 +21,14 @@ export class LoginPage implements OnInit {
     this.authService.login(this.data).then( data => {
       this.token = data;
       //console.log(this.token);
-      this.router.navigate(['/tabs']);
-      }); 
+      if(this.token.data.type == 'client'){
+        this.router.navigate(['/tabs']);
+      }
+      else{
+        this.router.navigate(['/ad-tabs']);
+      }
+      
+    }); 
     
   }
 }
