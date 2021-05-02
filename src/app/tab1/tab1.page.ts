@@ -62,11 +62,16 @@ export class Tab1Page {
     }, 200);
   }
 
-  darLike(id){
-    this.data = id
+  darLike($idOpinion){ 
+    this.data = $idOpinion;
     //console.log(this.data);
     //console.log(this.authService.token)
     this.authService.hacerLike(this.authService.token,this.data);
-     
+    
+    this.authService.getOpiniones(this.authService.token).then(data => {
+      this.opiniones = data
+      this.data = this.filtroOpiniones(data)
+      //console.log(this.data)
+    });
   }
 }
