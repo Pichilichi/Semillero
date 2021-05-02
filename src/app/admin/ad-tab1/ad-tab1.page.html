@@ -5,5 +5,22 @@
 </ion-header>
 
 <ion-content>
-
-</ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
+    <ion-item-sliding *ngFor="let user of users.data">
+      <ion-item *ngIf="user.actived == 0">
+        <ion-label>
+          <h2>{{user.name}}</h2>
+          <p>{{user.id}} -- {{user.email}}</p>
+        </ion-label>
+        <ion-button color='transparent' (click)="activarUsuario(user.id)">Activar</ion-button>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-content>
+  

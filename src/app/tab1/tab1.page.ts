@@ -61,4 +61,12 @@ export class Tab1Page {
       }
     }, 200);
   }
+
+  darLike(id){
+    this.data = id
+    //console.log(this.data);
+    //console.log(this.authService.token)
+    this.authService.hacerLike(this.authService.token,this.data);
+     
+  }
 }

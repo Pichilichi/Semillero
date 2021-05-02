@@ -27,7 +27,7 @@
 
       <ion-row no-padding>
         <ion-col>
-          <ion-button color="transparent" size="small" >
+          <ion-button color="transparent" size="small" (click)="darLike(opinion.id)">
             <ion-icon name="thumbs-up-sharp"></ion-icon>
            {{ opinion.num_likes >= 3 ? opinion.num_likes : ' '}}
           </ion-button>   

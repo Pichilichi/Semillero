@@ -61,7 +61,7 @@ export class AuthService {
   getUsers(tok:any){
     return new Promise(resolve => {
       this.http.get(this.apiUrl + '/users', {
-      headers: new HttpHeaders().set('Authorization', 'Bearer' + tok.data.token),
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.data.token),
       })
       .subscribe(data => {
         resolve(data);
@@ -77,6 +77,39 @@ export class AuthService {
       .subscribe(data =>{
         resolve(data);
       }, err=> {
+        console.log(err);
+      });
+    });
+  }
+
+  hacerLike(tok: any, data: any){
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/like', 
+      {
+        user_id: tok.data.id,
+        opinion_id: data,
+      },{
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.data.token),
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  activarUsuario(tok: any, data: any){
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/activate',
+      {
+        user_id: data,
+      },{
+        headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.data.token),
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
         console.log(err);
       });
     });
