@@ -1,17 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Productos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-card *ngFor="let producto of data.data">
+    <ion-card-header>
+      <ion-card-title>{{producto.name}}</ion-card-title>
+      <ion-button color="transparent" size="small"> Ver más </ion-button>
+    </ion-card-header>
+  </ion-card>
 </ion-content>

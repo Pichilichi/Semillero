@@ -116,4 +116,16 @@ export class AuthService {
     });
   }
 
+  getProductos(tok: any){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl + '/products', {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + tok.data.token),
+      })
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+      });
+  }
 }
