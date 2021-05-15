@@ -28,6 +28,10 @@ const routes: Routes = [
   },  {
     path: 'ad-tab1',
     loadChildren: () => import('./admin/ad-tab1/ad-tab1.module').then( m => m.AdTab1PageModule)
+  },
+  {
+    path: 'modal-productos',
+    loadChildren: () => import('./modal/modal-productos/modal-productos.module').then( m => m.ModalProductosPageModule)
   }
 
 ];

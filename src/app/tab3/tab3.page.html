@@ -10,7 +10,7 @@
   <ion-card *ngFor="let producto of data.data">
     <ion-card-header>
       <ion-card-title>{{producto.name}}</ion-card-title>
-      <ion-button color="transparent" size="small"> Ver más </ion-button>
+      <ion-button color="transparent" size="small" (click)="ProductosModal(producto.id)"> Ver más </ion-button>
     </ion-card-header>
   </ion-card>
 </ion-content>

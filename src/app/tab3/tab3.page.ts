@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { element } from 'protractor';
+import { ModalProductosPage } from '../modal/modal-productos/modal-productos.page';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -12,6 +14,7 @@ export class Tab3Page {
 
   data: any;
   productos = {};
+  img: string;
 
   constructor(private http: HttpClient, private authService: AuthService, public modalController: ModalController) {
     this.data = '';
@@ -21,11 +24,32 @@ export class Tab3Page {
     });
   }
 
-  // async ProductosModal(){
-  //   const modal = await this.modalController.create({
-      
-  //   });
-  // }
+  async ProductosModal($id){
+    const modal = await this.modalController.create({
+      component: ModalProductosPage,
+      cssClass: 'my-modal-css',
+      componentProps:{
+        data: this.filtroProductos(this.data, $id),
+        imagen: this.data.data[$id-1].img
+      }
+    });
+    // console.log($id)
+    // console.log(this.data.data[$id-1].img)
+    return await modal.present();
+  }
+  
+  filtroProductos(toSort: any, id){
+    return toSort.data.filter((element) => element.id == id);
+  }
+
+  filtroImagen(id){
+    this.img = this.data.data.filter((element) => {
+      element.id == id;
+
+      return element.img
+    })
+  }
+
   
 
 }

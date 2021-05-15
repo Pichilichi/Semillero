@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="end" color="transparent" size="small" (click)="cerrar()">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>{{data[0].name}} </h1>
+  <ion-img [src]="imagen"></ion-img>
+  <p>Como usarlo: {{data[0].how_to_use}}</p>
+</ion-content>
