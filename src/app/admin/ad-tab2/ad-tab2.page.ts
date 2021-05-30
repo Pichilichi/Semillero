@@ -69,10 +69,22 @@ export class AdTab2Page implements OnInit {
     this.opinionesFiltradas(this.opiniones);
     this.pdfObj = pdfMake.createPdf(docDefinition);
     //console.log(this.fechaDesde + " " + this.fechaHasta)
+    // this.mandarMail();
     this.pdfObj.download();
   }
 
   filtroOpiniones(toSort: any){
     return toSort.data.filter((element) => element.id < 100)
   }
+
+  // mandarMail(){
+  //   let email = {
+  //     to: 'raulreyes@gmail.com',
+  //     subject: 'Informes',
+  //     body: 'Se adjuntan los pdfs',
+  //     attachments: [this.pdfObj],
+  //     isHtml: true,
+  //   };
+  //   this.emailComposer.open(email);
+  // }
 }
