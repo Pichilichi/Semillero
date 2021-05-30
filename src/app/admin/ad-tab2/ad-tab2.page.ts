@@ -44,7 +44,7 @@ export class AdTab2Page implements OnInit {
         " | Descripción: " + datos.data[i].description +
         " | Nombre de la plaga: " + datos.data[i].plague_name + " \n" + " \n"
       }
-      console.log(this.resultadoOpiniones)
+      // console.log(this.resultadoOpiniones)
     }
   }
 
