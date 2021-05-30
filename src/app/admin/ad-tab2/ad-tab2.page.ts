@@ -16,31 +16,35 @@ export class AdTab2Page implements OnInit {
   opiniones = {};
   resultadoOpiniones = [];
   pdfObj = null;
+  fechaDesde = new Date().toISOString();
+  fechaHasta = new Date().toISOString();
 
   constructor(private http: HttpClient, private authService: AuthService) {
     this.data = '';
     this.authService.getOpiniones(this.authService.token).then(data => {
       this.opiniones = data;
       this.data = this.filtroOpiniones(data);
-      this.opinionesFiltradas(this.opiniones);
+      
     });
    }
 
   ngOnInit() {
   }
 
+  
   opinionesFiltradas(datos: any){
     for(let i = 0; i < datos.data.length; i++){
       // console.log(datos.data[i].headline + " " + datos.data[i].id + 
       // " " + datos.data[i].description +
       // " " + datos.data[i].plague_name);
-
-      this.resultadoOpiniones[i] = "Titular: " + datos.data[i].headline + 
-      " | Id: " + datos.data[i].id + 
-      " | Descripción: " + datos.data[i].description +
-      " | Nombre de la plaga: " + datos.data[i].plague_name + " \n" + " \n"
-
-      // console.log(this.resultadoOpiniones)
+      console.log(datos.data[i].created_at)
+      if(datos.data[i].created_at >= this.fechaDesde && datos.data[i].num_likes >= 5){
+        this.resultadoOpiniones[i] = datos.data[i].headline + 
+        " | Id: " + datos.data[i].id + 
+        " | Descripción: " + datos.data[i].description +
+        " | Nombre de la plaga: " + datos.data[i].plague_name + " \n" + " \n"
+      }
+      console.log(this.resultadoOpiniones)
     }
   }
 
@@ -62,7 +66,9 @@ export class AdTab2Page implements OnInit {
         }
       }
     }
+    this.opinionesFiltradas(this.opiniones);
     this.pdfObj = pdfMake.createPdf(docDefinition);
+    //console.log(this.fechaDesde + " " + this.fechaHasta)
     this.pdfObj.download();
   }
 

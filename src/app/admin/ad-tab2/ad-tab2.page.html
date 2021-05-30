@@ -1,23 +1,22 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Informes</ion-title>
-    <ion-button (click)="OpinionesPDF()"> Informes </ion-button>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-card *ngFor="let opinion of data">
-      <ion-card-header>
-        <ion-card-subtitle>{{ opinion.created_at | date }}</ion-card-subtitle>
-        <ion-card-title>{{ opinion.headline }}</ion-card-title>
-      </ion-card-header>
+  <h6>El buscador tiene en cuenta mes y dia; si se quiere buscar algo creado en 
+    el dia 15 (por ejemplo), hay que buscarlo desde el dia anterior</h6>
+  <h2> Fecha Inicial </h2>
+  <ion-datetime placeholder="dd/mm/yy" displayFormat="DD/MM/YYYY" 
+    [ngModel]="fechaDesde" (ngModelChange)="fechaDesde = $event" class="ion-input">
+  </ion-datetime>
 
-      <ion-card-content>
-        {{ opinion.description }}
-      </ion-card-content>
-      
-    </ion-card>
-  </ion-list>
+  <h2> Fecha Final </h2>
+  <ion-datetime placeholder="dd/mm/yy" displayFormat="DD/MM/YYYY" 
+    [ngModel]="fechaHasta" (ngModelChange)="fechaHasta = $event" class="ion-input">
+  </ion-datetime>
 
+  <ion-button (click)="OpinionesPDF()"> Generar PDF </ion-button>
 </ion-content>
