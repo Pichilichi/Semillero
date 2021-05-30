@@ -32,6 +32,10 @@ const routes: Routes = [
   {
     path: 'modal-productos',
     loadChildren: () => import('./modal/modal-productos/modal-productos.module').then( m => m.ModalProductosPageModule)
+  },
+  {
+    path: 'ad-tab2',
+    loadChildren: () => import('./admin/ad-tab2/ad-tab2.module').then( m => m.AdTab2PageModule)
   }
 
 ];
