@@ -17,6 +17,10 @@ const routes: Routes = [
         loadChildren: () => import('../ad-tab2/ad-tab2.module').then(m => m.AdTab2PageModule)
       },
       {
+        path: 'ad-tab3',
+        loadChildren: () => import('../ad-tab3/ad-tab3-routing.module').then(m => m.AdTab3PageRoutingModule)
+      },
+      {
         path: '',
         redirectTo: '/ad-tabs/ad-tab1',
         pathMatch: 'full'

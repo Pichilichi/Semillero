@@ -36,6 +36,10 @@ const routes: Routes = [
   {
     path: 'ad-tab2',
     loadChildren: () => import('./admin/ad-tab2/ad-tab2.module').then( m => m.AdTab2PageModule)
+  },
+  {
+    path: 'ad-tab3',
+    loadChildren: () => import('./admin/ad-tab3/ad-tab3.module').then( m => m.AdTab3PageModule)
   }
 
 ];
