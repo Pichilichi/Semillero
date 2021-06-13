@@ -5,6 +5,13 @@
 </ion-header>
 
 <ion-content>
+  <ion-item>
+    <ion-label> Buscar por plaga </ion-label>
+    <ion-select (ionChange)="change()" [(ngModel)]="id">
+      <ion-select-option *ngFor="let plag of plagas" value="{{ plag.id }}">{{ plag.name }}</ion-select-option>
+      <ion-select-option value="11">Mostrar todas</ion-select-option>
+    </ion-select>
+  </ion-item>
   <div class="chart-wrapper">
     <canvas baseChart 
     [datasets]="barChartData"
